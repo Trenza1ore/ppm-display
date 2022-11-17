@@ -2,12 +2,13 @@ from setuptools import setup, find_packages
   
 with open('requirements.txt') as f:
     requirements = f.readlines()
-  
-long_description = 'A simple tool that displays ppm/pgm files via opencv'
+
+with open('README.md') as f:
+    long_description = f.read()
   
 setup(
         name ='ppm-display',
-        version ='1.0.4',
+        version ='1.1.0',
         author ='Hugo (Jin Huang)',
         author_email ='huangj78@cardiff.ac.uk',
         url ='https://github.com/Trenza1ore/ppm-display',

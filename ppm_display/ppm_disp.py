@@ -1,13 +1,12 @@
 """
 Usage:
     ppm-disp -i
-    ppm-disp [-d] <file>...
-    ppm-disp [-s] <size> <file>...
+    ppm-disp -s <size> <file>...
+    ppm-disp <file>...
 
 Options:
     -i  about the tool
-    -d  display ppm/pgm images (maximum windows size: 600x600)
-    -s  display images with a set maximum windows size
+    -s  display images with a non-default maximum windows size
 """
 
 from docopt import docopt
@@ -43,14 +42,23 @@ def main():
         print("This tool was written by Hugo in 2022 to display ppm and pgm files.")
     elif args["-s"] == True:
         data = parse_args(args=args)
-        size = data[0]
-        for i, val in enumerate(data[1:]):
+        print('s', data, args)
+        try:
+            size = int(args["<size>"])
+        except:
+            print(f"Size ({args['<size>']}) is not entered as an integer.")
+            return
+        for i, val in enumerate(data):
             show_img(i, val, size);
         cv.waitKey(0)
         cv.destroyAllWindows()
     else:
         data = parse_args(args=args)
+        print(data)
         for i, val in enumerate(data):
             show_img(i, val);
         cv.waitKey(0)
         cv.destroyAllWindows()
+
+if __name__ == "__main__":
+    main()
