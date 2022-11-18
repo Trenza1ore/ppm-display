@@ -24,7 +24,8 @@ def show_img(id: int, filepath: str, size: int = 600) -> None:
             cv.resizeWindow(window_name, size, size // ratio)
         else:
             cv.resizeWindow(window_name, round(size * ratio), size)
-            
+    fname = filepath.split('/')[-1].split('.')
+    cv.imwrite(f"{fname[-2]}.png", img)
     cv.imshow(window_name, img)
 
 def cut_string(x: str) -> None:

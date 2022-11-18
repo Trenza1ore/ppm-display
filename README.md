@@ -1,5 +1,5 @@
 # ppm-display
- A simple tool that displays ppm/pgm files via OpenCV. The default maximum window size is 600x600.
+ A simple tool that displays ppm/pgm files via OpenCV and saves the images in png format. The default maximum window size is 600x600.
 ## Usage
     ppm-disp -i
     ppm-disp -s <size> <file>...

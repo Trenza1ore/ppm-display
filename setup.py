@@ -8,7 +8,7 @@ with open('README.md') as f:
   
 setup(
         name ='ppm-display',
-        version ='1.1.0',
+        version ='1.1.1',
         author ='Hugo (Jin Huang)',
         author_email ='huangj78@cardiff.ac.uk',
         url ='https://github.com/Trenza1ore/ppm-display',
