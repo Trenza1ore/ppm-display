@@ -17,12 +17,12 @@ def show_img(id: int, filepath: str, size: int = 600) -> None:
     img = cv.imread(filepath)
     cv.namedWindow(window_name, cv.WINDOW_NORMAL)
     
-    width, height, _ = img.shape
+    height, width, _ = img.shape
     ratio = width / height
     if width > height:
-        cv.resizeWindow(window_name, round(size * ratio), size)
-    else:
         cv.resizeWindow(window_name, size, round(size // ratio))
+    else:
+        cv.resizeWindow(window_name, round(size * ratio), size)
     fname = filepath.split('/')[-1].split('.')
     cv.imwrite(f"{fname[-2]}.png", img)
     cv.imshow(window_name, img)
