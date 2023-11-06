@@ -8,9 +8,9 @@ with open('README.md') as f:
   
 setup(
         name ='ppm-display',
-        version ='1.1.1',
+        version ='1.2',
         author ='Hugo (Jin Huang)',
-        author_email ='huangj78@cardiff.ac.uk',
+        author_email ='s2050808@ed.ac.uk',
         url ='https://github.com/Trenza1ore/ppm-display',
         description ='PPM/PGM image viewer',
         long_description = long_description,

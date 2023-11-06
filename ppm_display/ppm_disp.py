@@ -18,12 +18,11 @@ def show_img(id: int, filepath: str, size: int = 600) -> None:
     cv.namedWindow(window_name, cv.WINDOW_NORMAL)
     
     width, height, _ = img.shape
-    if max(width, height) > size:
-        ratio = width / height
-        if width > height:
-            cv.resizeWindow(window_name, size, size // ratio)
-        else:
-            cv.resizeWindow(window_name, round(size * ratio), size)
+    ratio = width / height
+    if width > height:
+        cv.resizeWindow(window_name, round(size * ratio), size)
+    else:
+        cv.resizeWindow(window_name, size, round(size // ratio))
     fname = filepath.split('/')[-1].split('.')
     cv.imwrite(f"{fname[-2]}.png", img)
     cv.imshow(window_name, img)
@@ -41,23 +40,20 @@ def main():
     args = docopt(__doc__)
     if args["-i"] == True:
         print("This tool was written by Hugo in 2022 to display ppm and pgm files.")
-    elif args["-s"] == True:
-        data = parse_args(args=args)
-        print('s', data, args)
-        try:
-            size = int(args["<size>"])
-        except:
-            print(f"Size ({args['<size>']}) is not entered as an integer.")
-            return
+    else:
+        if args["-s"] == True:
+            data = parse_args(args=args)
+            try:
+                size = int(args["<size>"])
+            except:
+                print(f"Size ({args['<size>']}) is not entered as an integer.")
+                return
+        else:
+            data = parse_args(args=args)
+            size = 600
+            
         for i, val in enumerate(data):
             show_img(i, val, size);
-        cv.waitKey(0)
-        cv.destroyAllWindows()
-    else:
-        data = parse_args(args=args)
-        print(data)
-        for i, val in enumerate(data):
-            show_img(i, val);
         cv.waitKey(0)
         cv.destroyAllWindows()
 
